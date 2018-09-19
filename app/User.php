@@ -2,13 +2,18 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Models\Concerns\HasSchemalessSettings;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasSchemalessSettings;
+
+    public $casts = [
+        'settings' => 'array',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'settings'
     ];
 
     /**
