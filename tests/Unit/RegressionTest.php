@@ -54,4 +54,20 @@ class RegressionTest extends TestCase
         $this->assertTrue($jsonObject->settings->die_hard);
         $this->assertEquals($jsonObject->settings->cups_of_coffee_per_day, 17);
     }
+
+    public function test_it_can_json_import_a_model_with_schemaless_attributes()
+    {
+        $jsonData = file_get_contents(__DIR__."/../stubs/exported-model.json");
+        
+        $user = User::first();
+
+        User::importFromJson($jsonData);
+
+        $user = User::first();
+
+        $this->assertInstanceOf(\App\User::class, $user);
+        $this->assertTrue($user->settings->hero_mode);
+        $this->assertTrue($user->settings->die_hard);
+        $this->assertEquals($user->settings->cups_of_coffee_per_day, 17);
+    }
 }
