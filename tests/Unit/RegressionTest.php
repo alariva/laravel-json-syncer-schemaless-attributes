@@ -70,4 +70,22 @@ class RegressionTest extends TestCase
         $this->assertTrue($user->settings->die_hard);
         $this->assertEquals($user->settings->cups_of_coffee_per_day, 17);
     }
+
+    public function test_it_can_json_import_a_model_with_schemaless_attributes_with_dates()
+    {
+        $jsonData = file_get_contents(__DIR__."/../stubs/exported-model-with-dates.json");
+        
+        $user = User::first();
+
+        User::importFromJson($jsonData);
+
+        $user = User::first();
+
+        $this->assertInstanceOf(\App\User::class, $user);
+        $this->assertTrue($user->settings->hero_mode);
+        $this->assertTrue($user->settings->die_hard);
+        $this->assertEquals($user->settings->cups_of_coffee_per_day, 17);
+        $this->assertEquals($user->created_at->toDateString(), '2018-09-20');
+        $this->assertEquals($user->updated_at->toDateString(), '2018-09-20');
+    }
 }

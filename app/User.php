@@ -36,4 +36,18 @@ class User extends Authenticatable implements JsonExportable, JsonImportable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $dates = [
+        'created_at', 'updated_at',
+    ];
+
+    public function getJsonExportableAttributes() : array
+    {
+        return ['name', 'email', 'password', 'settings', 'created_at', 'updated_at'];
+    }
+
+    public function getJsonImportableAttributes() : array
+    {
+        return ['name', 'email', 'password', 'settings', 'created_at', 'updated_at'];
+    }
 }
