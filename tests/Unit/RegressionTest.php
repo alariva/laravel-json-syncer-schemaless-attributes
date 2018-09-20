@@ -85,7 +85,18 @@ class RegressionTest extends TestCase
         $this->assertTrue($user->settings->hero_mode);
         $this->assertTrue($user->settings->die_hard);
         $this->assertEquals($user->settings->cups_of_coffee_per_day, 17);
-        $this->assertEquals($user->created_at->toDateString(), '2018-09-20');
-        $this->assertEquals($user->updated_at->toDateString(), '2018-09-20');
+
+        ////////////////////////////////////////////////////////////////////
+        // Created and updated dates wont be imported
+        // 
+        // See:
+        // 
+        // https://github.com/mathieutu/laravel-json-syncer/issues/2
+        // 
+        // https://github.com/mathieutu/laravel-json-syncer/issues/3
+        ////////////////////////////////////////////////////////////////////
+
+        $this->assertEquals($user->created_at->toDateString(), date('Y-m-d'));
+        $this->assertEquals($user->updated_at->toDateString(), date('Y-m-d'));
     }
 }
