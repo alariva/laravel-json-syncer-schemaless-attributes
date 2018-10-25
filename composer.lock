@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a150667bcd6541ab77563fb1e660799d",
+    "content-hash": "bc7eaa04f81d9c67c41e6c9bf65d6634",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -743,16 +743,16 @@
         },
         {
             "name": "mathieutu/laravel-json-syncer",
-            "version": "1.0.0",
+            "version": "dev-feature-touch-timestamps",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mathieutu/laravel-json-syncer.git",
-                "reference": "b907f7173960e42583d0b45f5376c99b193fecfb"
+                "url": "https://github.com/alariva/laravel-json-syncer.git",
+                "reference": "3ae2baf757b28ef19d92800edf7466c06e7de687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mathieutu/laravel-json-syncer/zipball/b907f7173960e42583d0b45f5376c99b193fecfb",
-                "reference": "b907f7173960e42583d0b45f5376c99b193fecfb",
+                "url": "https://api.github.com/repos/alariva/laravel-json-syncer/zipball/3ae2baf757b28ef19d92800edf7466c06e7de687",
+                "reference": "3ae2baf757b28ef19d92800edf7466c06e7de687",
                 "shasum": ""
             },
             "require": {
@@ -770,7 +770,11 @@
                     "MathieuTu\\JsonSyncer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "MathieuTu\\JsonSyncer\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -781,7 +785,10 @@
                 }
             ],
             "description": "Export and import your models to/from JSON",
-            "time": "2017-08-07T09:54:57+00:00"
+            "support": {
+                "source": "https://github.com/alariva/laravel-json-syncer/tree/master"
+            },
+            "time": "2017-09-26 13:11:16"
         },
         {
             "name": "monolog/monolog",
@@ -4159,7 +4166,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "mathieutu/laravel-json-syncer": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
